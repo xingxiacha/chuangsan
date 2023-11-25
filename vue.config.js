@@ -26,6 +26,7 @@ module.exports = {
    */
 
   // lintOnSave: process.env.NODE_ENV === 'development',
+  publicPath: './',
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
