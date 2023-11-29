@@ -26,7 +26,9 @@ module.exports = {
    */
 
   // lintOnSave: process.env.NODE_ENV === 'development',
-  publicPath: './',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/chuangsan/'
+    : '/',
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
