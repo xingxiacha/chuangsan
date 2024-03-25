@@ -64,31 +64,31 @@ export default {
         {
           name: '形状',
           children: [
-            { name: '三角形', isSelected: false , father: 'shape'},
-            { name: '线型', isSelected: false , father: 'shape'},
-            { name: '散点', isSelected: false , father: 'shape'},
-            { name: '弧形', isSelected: false , father: 'shape'},
-            { name: '线条', isSelected: false , father: 'shape'},
-            { name: '矩形', isSelected: false , father: 'shape'},
-            { name: '园形', isSelected: false , father: 'shape'},
-            { name: '多边形', isSelected: false , father: 'shape'},
+            { name: '三角形', isSelected: false, father: 'shape' },
+            { name: '线型', isSelected: false, father: 'shape' },
+            { name: '散点', isSelected: false, father: 'shape' },
+            { name: '弧形', isSelected: false, father: 'shape' },
+            { name: '线条', isSelected: false, father: 'shape' },
+            { name: '矩形', isSelected: false, father: 'shape' },
+            { name: '园形', isSelected: false, father: 'shape' },
+            { name: '多边形', isSelected: false, father: 'shape' },
           ]
         },
         {
           name: '图类',
           children: [
-            { name: '统计图表', isSelected: false , father: 'category'},
-            { name: '示意图', isSelected: false , father: 'category'},
+            { name: '统计图表', isSelected: false, father: 'category' },
+            { name: '示意图', isSelected: false, father: 'category' },
           ]
         },
         {
           name: '功能',
           children: [
-            { name: '比较', isSelected: false , father: 'feature'},
-            { name: '组成', isSelected: false , father: 'feature'},
-            { name: '关系', isSelected: false , father: 'feature'},
-            { name: '相关性分析', isSelected: false , father: 'feature'},
-            { name: '趋势', isSelected: false , father: 'feature'},
+            { name: '比较', isSelected: false, father: 'feature' },
+            { name: '组成', isSelected: false, father: 'feature' },
+            { name: '关系', isSelected: false, father: 'feature' },
+            { name: '相关性分析', isSelected: false, father: 'feature' },
+            { name: '趋势', isSelected: false, father: 'feature' },
           ]
         }
       ]
@@ -118,7 +118,7 @@ export default {
         let j = 0;
         if (this.choose[0].children.length == 0) {
           j++;
-        }else {
+        } else {
           for (let k = 0; k < this.choose[0].children.length; k++) {
             if (this.TotalDiagrams[i].shape == this.choose[0].children[k]) {
               j++;
@@ -128,7 +128,7 @@ export default {
         }
         if (this.choose[1].children.length == 0) {
           j++;
-        }else {
+        } else {
           for (let k = 0; k < this.choose[1].children.length; k++) {
             if (this.TotalDiagrams[i].category == this.choose[1].children[k]) {
               j++;
@@ -138,7 +138,7 @@ export default {
         }
         if (this.choose[2].children.length == 0) {
           j++;
-        }else {
+        } else {
           let temp = this.TotalDiagrams[i].feature.split('、');
           for (let k = 0; k < this.choose[2].children.length; k++) {
             for (let l = 0; l < temp.length; l++) {
@@ -307,6 +307,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 header span:hover {
   cursor: pointer;
 }

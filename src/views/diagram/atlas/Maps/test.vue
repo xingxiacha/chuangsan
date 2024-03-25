@@ -1,4 +1,3 @@
-
 <template>
   <div style="overflow-x:hidden; display: flex; width: 100%;">
     <meta name="referrer" content="no-referrer" />
@@ -152,7 +151,7 @@ export default {
 
 </script>
 
-<style  scoped>
+<style scoped>
 /* .doc-inner p {
   font-size: 30px;
   line-height: 1.8;
@@ -353,4 +352,3 @@ table {
   object-fit: cover;
 }
 </style>
-
