@@ -29,44 +29,175 @@
       <div>
         <p v-html="this.artData.element" class="restrict1"></p>
       </div>
-      <h2 id="1">1、基本信息介绍</h2>
-      <p v-html="this.artData.intro"></p>
-      <h3>图表属性</h3>
-      <ul>
-        <li>形状：{{ this.attrsData.shape }}</li>
-        <li>图类：{{ this.attrsData.category }}</li>
-        <li>功能：{{ this.attrsData.feature }}</li>
-      </ul>
-      <h2 id="2">2、图表分析</h2>
-      <h3>适合应用的场景</h3>
-      <p v-html="this.artData.apply" class="restrict2"></p>
-      <h3>不适合应用的场景</h3>
-      <p v-html="this.artData.unapply" class="restrict3"></p>
-      <h2 id="3">3、绘制</h2>
-      <h3>描述</h3>
-      <p v-html="this.artData.paintingDescribe"></p>
-      <h3>数据结构</h3>
-      <pre><p v-html="this.artData.dataStructure"></p></pre>
-      <h3>Mermaid代码</h3>
-      <pre><p v-html="this.artData.mermaidCode"></p></pre>
-      <h3>Mermaid效果图</h3>
-      <img :src="this.artData.mermaidImg" class="restrict4">
-      <h3>渲染数据</h3>
-      <div style="height: 80vh;width: 100%;">
 
-        <chart1 v-if="this.id == 10"></chart1>
+      <h2 id="1">1、基本信息介绍&nbsp;&nbsp;<el-switch v-model="value1" active-color="#13ce66" inactive-color="#ff4949"
+          active-text="显示" inactive-text="收起">
+        </el-switch></h2>
 
-        <chart3 v-if="this.id == 3"></chart3>
-        <chart4 v-if="this.id == 2"></chart4>
-        <chart5 v-if="this.id == 102"></chart5>
-        <chart6 v-if="this.id == 6"></chart6>
-        <chart7 v-if="this.id == 108"></chart7>
-        <chart8 v-if="this.id == 107"></chart8>
-        <chart9 v-if="this.id == 104"></chart9>
+      <div v-if="value1">
+        <el-card shadow="always">
+          <p v-html="this.artData.intro"></p>
+        </el-card>
+        <h3>图表属性</h3>
+        <ul>
+          <li>形状：{{ this.attrsData.shape }}</li>
+          <el-divider></el-divider>
+          <li>图类：{{ this.attrsData.category }}</li>
+          <el-divider></el-divider>
+          <li>功能：{{ this.attrsData.feature }}</li>
+          <el-divider></el-divider>
+        </ul>
+
       </div>
-    </div>
+      <h2 id="2">2、图表分析&nbsp;&nbsp;<el-switch v-model="value2" active-color="#13ce66" inactive-color="#ff4949"
+          active-text="显示" inactive-text="收起">
+        </el-switch></h2>
+      <div v-if="value2">
+        <h3>适合应用的场景</h3>
+        <el-card shadow="always">
+          <p v-html="this.artData.apply" class="restrict2"></p>
+        </el-card>
 
-  </div>
+        <h3>不适合应用的场景</h3>
+        <el-card shadow="always">
+          <p v-html="this.artData.unapply" class="restrict3"></p>
+        </el-card>
+
+      </div>
+      <h2 id="3">3、绘制&nbsp;&nbsp;<el-switch v-model="value3" active-color="#13ce66" inactive-color="#ff4949"
+          active-text="显示" inactive-text="收起">
+        </el-switch></h2>
+      <div v-if="value3">
+
+        <h3>描述</h3>
+        <el-card shadow="always">
+          <p v-html="this.artData.paintingDescribe"></p>
+        </el-card>
+
+        <h3>数据结构</h3>
+        <el-card shadow="always">
+          <pre><p v-html="this.artData.dataStructure" ></p></pre>
+        </el-card>
+        <h3 v-show="this.artData.mermaidCode != ' '">Mermaid代码</h3>
+        <el-card shadow="always" v-show="this.artData.mermaidCode != ' '">
+          <pre><p v-html="this.artData.mermaidCode"></p></pre>
+        </el-card>
+        <h3 v-show="this.artData.mermaidImg != ' '">Mermaid效果图</h3>
+        <el-card shadow="always" v-show="this.artData.mermaidImg != ' '">
+          <img :src="this.artData.mermaidImg" class="restrict4" v-show="this.artData.mermaidImg != ' '">
+        </el-card>
+        <h3
+          v-show="(this.artData.name != '组织结构图' && this.artData.name != '鱼骨图' && this.artData.name != '树型网络拓扑图' && this.artData.name != '星型网络拓扑图' && this.artData.name != '弧线图')">
+          渲染数据</h3>
+        <div style="height: 80vh;width: 100%;">
+
+          <chart1 v-if="this.artData.name == '桑基图'"></chart1>
+
+          <chart3 v-if="this.artData.name == '力导向图'"></chart3>
+          <chart4 v-if="this.artData.name == '时间轴图'"></chart4>
+          <chart5 v-if="this.artData.name == '漏斗图'"></chart5>
+          <chart6 v-if="this.artData.name == '树图'"></chart6>
+          <chart7 v-if="this.artData.name == '旭日图'"></chart7>
+          <chart8 v-if="this.artData.name == '平行坐标图'"></chart8>
+          <chart9 v-if="this.artData.name == '雷达图'"></chart9>
+        </div>
+      </div>
+
+      <h2 id="4">4、专项工具&nbsp;&nbsp;<el-switch v-model="value4" active-color="#13ce66" inactive-color="#ff4949"
+          active-text="显示" inactive-text="收起">
+        </el-switch></h2>
+      <div v-if="value4">
+        <div v-if="this.artData.id == 89">
+          <ul>
+            <li style="margin-bottom: 20px;"><el-link href="http://app.rawgraphs.io/" type="primary">Rawgraphs</el-link>
+            </li>``
+
+            <li><el-link href="https://www.aculocity.com/labs/sunburst-chart" type="primary">在线生成工具（提供demo）</el-link>
+            </li>
+
+          </ul>
+
+        </div>
+        <div v-if="this.artData.id == 88">
+          <ul>
+            <li style="margin-bottom: 20px;"><el-link href="https://www.xdat.org/" type="primary">Alfred
+                Inselberg开发的平行坐标专用工具，需要简单安装</el-link>
+            </li>
+
+            <li><el-link href="http://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/PISQAQ"
+                type="primary">北京大学多维数据可视化与可视分析工具集</el-link>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+
+      <h2 id="5">5、学习资源&nbsp;&nbsp;<el-switch v-model="value5" active-color="#13ce66" inactive-color="#ff4949"
+          active-text="显示" inactive-text="收起">
+        </el-switch></h2>
+      <div v-if="value5">
+        <div v-if="this.artData.id == 89">
+          <ul>
+            <li style="margin-bottom: 20px;"><el-link
+                href="https://www.microsoft.com/en-us/microsoft-365/blog/2015/08/11/breaking-down-hierarchical-data-with-treemap-and-sunburst-charts/"
+                type="primary">office官方对旭日图的讲解</el-link>
+            </li>
+
+            <li><el-link
+                href="https://www.wired.com/2014/04/tree-diagrams-the-most-important-data-viz-tool-in-history/#slide-8"
+                type="primary">树形结构图的历史渊源</el-link>
+            </li>
+
+          </ul>
+
+        </div>
+        <div v-if="this.artData.id == 88">
+          <ul>
+            <li style="margin-bottom: 20px;"><el-link href="https://eagereyes.org/techniques/parallel-coordinates"
+                type="primary">【推荐】平行坐标系较完整的介绍（英文）；中文翻译版</el-link>
+            </li>
+
+            <li><el-link href="http://www.math.tau.ac.il/~aiisreal/" type="primary">平行坐标系发明者Alfred
+                Inselberg的个人主页</el-link>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+      <div class="tab">
+        <el-card class="el-card-d" shadow="always">
+          <div class="infinite-list-wrapper" style="overflow:auto;">
+            <el-timeline infinite-scroll-disabled="disabled">
+              <div v-if="allmessages.length > 0">
+                <el-timeline-item v-for="(item, index) in allmessages" :key="index" :timestamp='item.createTime'
+                  placement="top">
+                  <el-card class="el-card-m" style="height:120px">
+                    <h4>{{ item.memberName }}：</h4>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.content }}</p>
+                  </el-card>
+                </el-timeline-item>
+              </div>
+              <div v-else>
+                <el-timeline-item placement="top">
+                  <el-card class="el-card-m" style="height:120px">
+                    <h4>管理员：</h4>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 说点什么吧😁</p>
+                  </el-card>
+                </el-timeline-item>
+              </div>
+            </el-timeline>
+          </div>
+          <div class="el-card-messages">
+            <el-input type="textarea" :rows="5" placeholder="输入留言" maxlength="200" v-model="message"></el-input>
+            <el-button type="info" round class="submit-message" @click="submitMessage">留言</el-button>
+          </div>
+        </el-card>
+
+      </div>
+
+    </div>
 </template>
 
 <script>
