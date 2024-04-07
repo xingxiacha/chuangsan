@@ -1,5 +1,7 @@
 <template>
   <div class="bg">
+    <el-backtop :bottom="100">
+    </el-backtop>
     <meta name="referrer" content="no-referrer" />
     <header>
       <span style="font-size: 30px;display: flex;justify-content: space-between;align-items: center; margin-left: 10px"
