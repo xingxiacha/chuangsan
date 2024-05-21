@@ -6,7 +6,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || '智拓' // page title
+const name = defaultSettings.title || '图拓' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
@@ -24,15 +24,16 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-
-  // lintOnSave: process.env.NODE_ENV === 'development',
   publicPath: './',
+  outputDir: 'dist',
+  assetsDir: 'static',
+  // lintOnSave: process.env.NODE_ENV === 'development',
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: 'https://tutuo.jiakunn.top',
+        target: 'http://120.26.4.54:8080',
         changeOrigin: true,
         ws: true,
         secure: false,

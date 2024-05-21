@@ -58,41 +58,68 @@ export default {
       diagrams: [],
       TotalDiagrams: [],
       choose: [
-        { name: 'shape', children: [] },
         { name: 'category', children: [] },
-        { name: 'feature', children: [] },
+        { name: 'functions', children: [] },
+        { name: 'dimension', children: [] },
+        { name: 'relation', children: [] },
+        { name: 'format', children: [] },
+        { name: 'complexity', children: [] },
       ],
       options: [
         {
-          name: '形状',
-          children: [
-            { name: '三角形', isSelected: false, father: 'shape' },
-            { name: '线型', isSelected: false, father: 'shape' },
-            { name: '散点', isSelected: false, father: 'shape' },
-            { name: '弧形', isSelected: false, father: 'shape' },
-            { name: '线条', isSelected: false, father: 'shape' },
-            { name: '矩形', isSelected: false, father: 'shape' },
-            { name: '园形', isSelected: false, father: 'shape' },
-            { name: '多边形', isSelected: false, father: 'shape' },
-          ]
-        },
-        {
           name: '图类',
           children: [
-            { name: '统计图表', isSelected: false, father: 'category' },
-            { name: '示意图', isSelected: false, father: 'category' },
+            { name: '数据展示图表', isSelected: false, father: 'category' },
+            { name: '流程图表', isSelected: false, father: 'category' },
+            { name: '结构图表', isSelected: false, father: 'category' },
           ]
         },
         {
           name: '功能',
           children: [
-            { name: '比较', isSelected: false, father: 'feature' },
-            { name: '组成', isSelected: false, father: 'feature' },
-            { name: '关系', isSelected: false, father: 'feature' },
-            { name: '相关性分析', isSelected: false, father: 'feature' },
-            { name: '趋势', isSelected: false, father: 'feature' },
+            { name: '数据对比与展示', isSelected: false, father: 'functions' },
+            { name: '数据层次结构与关系', isSelected: false, father: 'functions' },
+            { name: '流程与步骤', isSelected: false, father: 'functions' },
+            { name: '时间和序列', isSelected: false, father: 'functions' },
+            { name: '流动与转换', isSelected: false, father: 'functions' },
           ]
-        }
+        },
+        // {
+        //   name: '数据维度',
+        //   children: [
+        //     { name: '一维数据', isSelected: false, father: 'dimension' },
+        //     { name: '多维数据', isSelected: false, father: 'dimension' },
+        //     { name: '时间数据', isSelected: false, father: 'dimension' },
+        //     { name: '流程数据', isSelected: false, father: 'dimension' },
+        //   ]
+        // },
+        {
+          name: '数据关系',
+          children: [
+            { name: '对比', isSelected: false, father: 'relation' },
+            { name: '组成', isSelected: false, father: 'relation' },
+            { name: '层次', isSelected: false, father: 'relation' },
+            { name: '流程', isSelected: false, father: 'relation' },
+            { name: '关联', isSelected: false, father: 'relation' },
+          ]
+        },
+        {
+          name: '数据表示形式',
+          children: [
+            { name: '图形', isSelected: false, father: 'format' },
+            { name: '图解', isSelected: false, father: 'format' },
+            { name: '网络', isSelected: false, father: 'format' },
+            { name: '表格', isSelected: false, father: 'format' },
+          ]
+        },
+        {
+          name: '复杂度',
+          children: [
+            { name: '简单', isSelected: false, father: 'complexity' },
+            { name: '中等', isSelected: false, father: 'complexity' },
+            { name: '复杂', isSelected: false, father: 'complexity' },
+          ]
+        },
       ]
     }
   },
@@ -122,7 +149,7 @@ export default {
           j++;
         } else {
           for (let k = 0; k < this.choose[0].children.length; k++) {
-            if (this.TotalDiagrams[i].shape == this.choose[0].children[k]) {
+            if (this.TotalDiagrams[i].category == this.choose[0].children[k]) {
               j++;
               break;
             }
@@ -132,7 +159,7 @@ export default {
           j++;
         } else {
           for (let k = 0; k < this.choose[1].children.length; k++) {
-            if (this.TotalDiagrams[i].category == this.choose[1].children[k]) {
+            if (this.TotalDiagrams[i].functions == this.choose[1].children[k]) {
               j++;
               break;
             }
@@ -141,18 +168,44 @@ export default {
         if (this.choose[2].children.length == 0) {
           j++;
         } else {
-          let temp = this.TotalDiagrams[i].feature.split('、');
           for (let k = 0; k < this.choose[2].children.length; k++) {
-            for (let l = 0; l < temp.length; l++) {
-              if (temp[l] == this.choose[2].children[k]) {
-                j++;
-                k = this.choose[2].children.length;
-                break;
-              }
+            if (this.TotalDiagrams[i].dimension == this.choose[2].children[k]) {
+              j++;
+              break;
             }
           }
         }
-        if (j == 3) {
+        if (this.choose[3].children.length == 0) {
+          j++;
+        } else {
+          for (let k = 0; k < this.choose[3].children.length; k++) {
+            if (this.TotalDiagrams[i].relation == this.choose[3].children[k]) {
+              j++;
+              break;
+            }
+          }
+        }
+        if (this.choose[4].children.length == 0) {
+          j++;
+        } else {
+          for (let k = 0; k < this.choose[4].children.length; k++) {
+            if (this.TotalDiagrams[i].format == this.choose[4].children[k]) {
+              j++;
+              break;
+            }
+          }
+        }
+        if (this.choose[5].children.length == 0) {
+          j++;
+        } else {
+          for (let k = 0; k < this.choose[5].children.length; k++) {
+            if (this.TotalDiagrams[i].complexity == this.choose[5].children[k]) {
+              j++;
+              break;
+            }
+          }
+        }
+        if (j == 6) {
           this.diagrams.push(this.TotalDiagrams[i]);
         }
       }
